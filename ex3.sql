@@ -15,7 +15,9 @@ use sakila;
 --
 -- -------------------------------------------------------------------------- --
 
-SELECT * FROM actor;
+SELECT actor_id, first_name, last_name
+FROM actor
+ORDER BY last_name, first_name;
 
 
 -- -------------------------------------------------------------------------- --
@@ -26,7 +28,9 @@ SELECT * FROM actor;
 --
 -- -------------------------------------------------------------------------- --
 
-SELECT * FROM actor;
+SELECT actor_id, first_name, last_name
+FROM actor
+WHERE ( last_name = 'WILLIAMS' ) OR ( last_name = 'DAVIS' );
 
 
 -- -------------------------------------------------------------------------- --
@@ -39,7 +43,10 @@ SELECT * FROM actor;
 --
 -- -------------------------------------------------------------------------- --
 
-SELECT * FROM rental;
+SELECT DISTINCT r.customer_id
+FROM customer c
+INNER JOIN rental r ON c.customer_id = r.customer_id
+WHERE date( r.rental_date ) = '2005-07-05';
 
 
 -- -------------------------------------------------------------------------- --
@@ -47,6 +54,7 @@ SELECT * FROM rental;
 -- 3.4
 -- Fill in the blanks ( denoted by `<#>' ) for this multitable query to achieve
 -- the following results:
+--
 --   SELECT c.email, r.return_date
 --   FROM customer c
 --     INNER JOIN rental <1>
