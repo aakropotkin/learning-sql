@@ -1,0 +1,8 @@
+((sql-mode . ((sql-mysql-login-params '((user     :default "camus")
+                                        (password :default "")
+                                        (database :default "sakila")
+                                        (server   :default "localhost")
+                                        (port     :default 3306)
+                                       )
+             ))
+))
