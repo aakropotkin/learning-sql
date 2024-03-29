@@ -84,7 +84,14 @@ INNER JOIN actor a          ON fa.actor_id = a.actor_id;
 --
 -- -------------------------------------------------------------------------- --
 
--- TODO
+CREATE VIEW country_payments AS
+SELECT cn.country_id, cn.country, sum( p.amount ) AS tot_payments
+FROM payment p
+INNER JOIN customer c ON p.customer_id = c.customer_id
+INNER JOIN address a  ON c.address_id = a.address_id
+INNER JOIN city ct    ON a.city_id = ct.city_id
+INNER JOIN country cn ON ct.country_id = cn.country_id
+GROUP BY cn.country_id;
 
 
 -- -------------------------------------------------------------------------- --
